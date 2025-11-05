@@ -85,57 +85,57 @@
          * ---------------------------------------------------------------------
          */
 
-        // 1. Create a global registry listening on the entire document body
-        const myRegistry = new customElement.Registry(document.body);
+        // // 1. Create a global registry listening on the entire document body
+        // const myRegistry = new customElement.Registry(document.body);
 
-        // 2. Register an expression that applies a connectedCallback-like function to every new element.
-        // This expression will turn the border of any new element green.
-        const expressionOne = function(elem) {
-            console.log('Expression 1 applied to:', elem.tagName);
-            elem.style.border = '2px solid green';
-            // Mimic connectedCallback
-            if (typeof elem.connectedCallback === 'function') {
-                elem.connectedCallback();
-            }
-        };
-        myRegistry.define(expressionOne);
+        // // 2. Register an expression that applies a connectedCallback-like function to every new element.
+        // // This expression will turn the border of any new element green.
+        // const expressionOne = function(elem) {
+        //     console.log('Expression 1 applied to:', elem.tagName);
+        //     elem.style.border = '2px solid green';
+        //     // Mimic connectedCallback
+        //     if (typeof elem.connectedCallback === 'function') {
+        //         elem.connectedCallback();
+        //     }
+        // };
+        // myRegistry.define(expressionOne);
 
-        // 3. Register a more specific expression for elements with is="my-component-name"
-        const expressionTwo = function(elem) {
-            if (elem.getAttribute('is') === 'my-component-name') {
-                console.log('Expression 2 applied to my-component-name');
-                // Define and immediately call a "connectedCallback"
-                elem.connectedCallback = function() {
-                    this.innerText = 'Yahh works';
-                    this.style.backgroundColor = 'yellow';
-                    this.style.padding = '10px';
-                    this.style.display = 'block'; // Make div visible
-                };
-                elem.connectedCallback();
-            }
-        };
-        myRegistry.define(expressionTwo);
+        // // 3. Register a more specific expression for elements with is="my-component-name"
+        // const expressionTwo = function(elem) {
+        //     if (elem.getAttribute('is') === 'my-component-name') {
+        //         console.log('Expression 2 applied to my-component-name');
+        //         // Define and immediately call a "connectedCallback"
+        //         elem.connectedCallback = function() {
+        //             this.innerText = 'Yahh works';
+        //             this.style.backgroundColor = 'yellow';
+        //             this.style.padding = '10px';
+        //             this.style.display = 'block'; // Make div visible
+        //         };
+        //         elem.connectedCallback();
+        //     }
+        // };
+        // myRegistry.define(expressionTwo);
 
 
-        /**
-         * ---------------------------------------------------------------------
-         *  DEMO FUNCTIONS
-         * ---------------------------------------------------------------------
-         */
-        const container = document.getElementById('container');
+        // /**
+        //  * ---------------------------------------------------------------------
+        //  *  DEMO FUNCTIONS
+        //  * ---------------------------------------------------------------------
+        //  */
+        // const container = document.getElementById('container');
 
-        function addGenericElement() {
-            const newDiv = document.createElement('div');
-            newDiv.innerText = 'I am a generic element.';
-            newDiv.style.margin = '10px 0';
-            container.appendChild(newDiv);
-        }
+        // function addGenericElement() {
+        //     const newDiv = document.createElement('div');
+        //     newDiv.innerText = 'I am a generic element.';
+        //     newDiv.style.margin = '10px 0';
+        //     container.appendChild(newDiv);
+        // }
 
-        function addMyComponent() {
-            const newComp = document.createElement('div');
-            // 'is' is traditionally for extending built-in elements, 
-            // but we use it here as a simple selector for our expression.
-            newComp.setAttribute('is', 'my-component-name');
-            newComp.style.margin = '10px 0';
-            container.appendChild(newComp);
-        }
+        // function addMyComponent() {
+        //     const newComp = document.createElement('div');
+        //     // 'is' is traditionally for extending built-in elements, 
+        //     // but we use it here as a simple selector for our expression.
+        //     newComp.setAttribute('is', 'my-component-name');
+        //     newComp.style.margin = '10px 0';
+        //     container.appendChild(newComp);
+        // }
